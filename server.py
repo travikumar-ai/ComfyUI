@@ -28,6 +28,7 @@ import comfy.model_management
 import node_helpers
 from app.frontend_management import FrontendManager
 from app.user_manager import UserManager
+from routes import InternalRoutes
 
 
 class BinaryEventTypes:
@@ -72,6 +73,7 @@ class PromptServer():
         mimetypes.types_map['.js'] = 'application/javascript; charset=utf-8'
 
         self.user_manager = UserManager()
+        self.internal_routes = InternalRoutes()
         self.supports = ["custom_nodes_from_web"]
         self.prompt_queue = None
         self.loop = loop
@@ -562,6 +564,7 @@ class PromptServer():
 
     def add_routes(self):
         self.user_manager.add_routes(self.routes)
+        self.app.add_subapp('/internal', self.internal_routes.get_app())
 
         # Prefix every route with /api for easier matching for delegation.
         # This is very useful for frontend dev server, which need to forward
