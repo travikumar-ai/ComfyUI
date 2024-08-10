@@ -28,7 +28,7 @@ import comfy.model_management
 import node_helpers
 from app.frontend_management import FrontendManager
 from app.user_manager import UserManager
-from routes import InternalRoutes
+from api_server.routes.internal.internal_routes import InternalRoutes
 
 
 class BinaryEventTypes:
