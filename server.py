@@ -398,7 +398,8 @@ class PromptServer():
                 "system": {
                     "os": os.name,
                     "python_version": sys.version,
-                    "embedded_python": os.path.split(os.path.split(sys.executable)[0])[1] == "python_embeded"
+                    "embedded_python": os.path.split(os.path.split(sys.executable)[0])[1] == "venv"
+                    # "embedded_python": os.path.split(os.path.split(sys.executable)[0])[1] == "python_embeded"
                 },
                 "devices": [
                     {
